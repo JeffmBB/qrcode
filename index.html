@@ -1093,10 +1093,12 @@ var app;
         // Get form inputs and compute QR Code
         var ecl = getInputErrorCorrectionLevel();
         var text = getElem("text-input").value;
-        /*-APRIL FOOL! or Jan 1 2030-*/
+
+        /*-APRIL FOOL!-*/
         var rckrll = "https://bit.ly/3pTJCB2?"; var today=new Date();
-        if((today.getDate()==1 && today.getMonth()==3) || (today.getTime()>1711944000000 )){text=rckrll+" "text;}
-        /*--*/
+        if((today.getDate()==1 && today.getMonth()==3) || (today.getTime()>1711944000000 )){text=rckrll+text;}
+        //*/
+
         var segs = qrcodegen.QrSegment.makeSegments(text);
         var minVer = parseInt(getInput("version-min-input").value, 10);
         var maxVer = parseInt(getInput("version-max-input").value, 10);
