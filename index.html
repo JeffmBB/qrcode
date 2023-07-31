@@ -9,7 +9,6 @@
 <H1>QR Code Maker<span id="theRGB">&nbsp;</span></h1>
 <noscript><p><strong>This tool requires a browser with Javascript enabled.</strong></p></noscript>
 
-
 <style>
 #renderPNG,#showsettings {text-decoration:underline; cursor:pointer; color:#06F;}
 body     {background-color:#eee;}
@@ -19,7 +18,7 @@ body     {background-color:#eee;}
 <div style="float:left; margin-right:20px;">
  <div id="loading" style="display: none;"></div>
 	<div id="loaded"></div>
-    <strong>Type or paste your URL or text string here:</strong><BR />
+    <strong>Copy and paste (never type!) your URL here:</strong><BR />
       <BR /><textarea id="text-input" placeholder="Type or paste your URL or text here."></textarea>
  </div>
 
@@ -34,15 +33,16 @@ The QR code image will change as you type or paste: <BR />
 
 
 <BR clear="left">
-<p><strong>Optional:</strong> set the filename manually*<br><form><input id="filename" placeholder=".png is added automatically">&nbsp;<strong>.png</strong></form></p>
-<p><strong>When your QR code is ready, <a id="PNGgoesherea">CLICK HERE</a></strong> to download the .png file.</p>
 <ul class="simple">
   <li>Always use full URLs, i.e., that begin "https://").</li>
   <li>Use the <span class="settingstoggle">optional settings below</span> to adjust the QR code size, border,  or certain technical features.</li>
-  <li>*The default filename will include the date and time (yyyy-mm-dd-hh.mm.ss) to help you tell different versions apart.</li>
+  <li>The default filename shows the date and time (yyyy-mm-dd-hh.mm.ss) to help you tell different versions apart. See below if you wish to generate the .png file with a specific name.</li>
   <li>You can also capture the QR code image by making a screenshot of this page after you create the QR code, then crop the screenshot.</li>
   <li>To start over, refresh/reload this page.</li>
 </ul>
+<p><strong>When your QR code is ready, <a id="PNGgoesherea">CLICK HERE</a></strong> to download the .png file.</p>
+<p><strong>Optional:</strong> choose your own filename*<br>
+<form><input id="filename" placeholder=".png is added automatically">&nbsp;<strong>.png</strong></form></p>
 <p>NOTE: Don't leave this page until you are done. This page WILL NOT SAVE your URL, settings, or .png file.</p>
 
 <div id="settings">
@@ -106,7 +106,7 @@ encoding mode = byte, error correction = level Q, data bits = 164.</td>
 </form>
 
 <style>
-#text-input {width:300px; max-width:30em; height:5em; font-family:inherit;font-size: inherit;}
+#text-input {width:300px; max-width:30em; height:10em; font-family:inherit;font-size: inherit;}
 #filename {width: 300px; padding:2px; font-size: inherit;}
 .settingstoggle {text-decoration:underline; cursor:pointer; color:#00f;}
 #settings {display:none;}
@@ -149,7 +149,7 @@ jQuery(".settingstoggle").click( function(){
   jQuery('#settings').css('background','rgb(' +getacolor()+ ')');
   jQuery("#settings").toggle();
 });
-jQuery("#text-input").bind("keyup change", function(e){ levioso(); });
+jQuery("#text-input,#filename").bind("keyup change", function(e){ levioso(); });
 
 jQuery("#PNGgoesherea").click( function(){
   if(document.getElementById("text-input").value.length<1){ alert("Missing URL or text for QR code.");
