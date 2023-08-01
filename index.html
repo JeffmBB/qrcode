@@ -34,15 +34,16 @@ The QR code image will change as you type or paste: <BR />
 
 <BR clear="left">
 <ul class="simple">
-  <li>Always use full URLs, i.e., that begin "https://").</li>
+  <li>Always use full URLs that begin with https://</li>
   <li>Use the <span class="settingstoggle">optional settings below</span> to adjust the QR code size, border,  or certain technical features.</li>
   <li>The default filename shows the date and time (yyyy-mm-dd-hh.mm.ss) to help you tell different versions apart. See below if you wish to generate the .png file with a specific name.</li>
   <li>You can also capture the QR code image by making a screenshot of this page after you create the QR code, then crop the screenshot.</li>
   <li>To start over, refresh/reload this page.</li>
 </ul>
-<p><strong>When your QR code is ready, <a id="PNGgoesherea">CLICK HERE</a></strong> to download the .png file.</p>
+<p><strong>When your QR code is ready, <a id="PNGgoesherea">CLICK HERE</a></strong> to download the .png file.<BR>You can also check it first, just point your camera at the QR code image.</p>
 <p><strong>Optional:</strong> choose your own filename*<br>
-<form><input id="filename" placeholder=".png is added automatically">&nbsp;<strong>.png</strong></form></p>
+<form><input id="filename" placeholder=".png is added automatically">&nbsp;<strong>.png</strong><BR>
+<span id="pngwarning"></span></form></p>
 <p>NOTE: Don't leave this page until you are done. This page WILL NOT SAVE your URL, settings, or .png file.</p>
 
 <div id="settings">
@@ -111,6 +112,7 @@ encoding mode = byte, error correction = level Q, data bits = 164.</td>
 .settingstoggle {text-decoration:underline; cursor:pointer; color:#00f;}
 #settings {display:none;}
 #settings {border:#f00 2px solid; background-color:#fff; width:50%; padding:0px 5px 0px 5px;}
+#pngwarning {color:#f00;}
 </style>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -136,6 +138,9 @@ function levioso(){
   var thelink = document.getElementById('PNGgoesherea');
   var thename = "qr-"+now;
   var username = document.getElementById("filename").value;
+  if( username.indexOf(".png")!=-1 ){
+      jQuery("#pngwarning").html("Please do not include .png in the file name.");
+      } else {jQuery("#pngwarning").html("");}
   if(username.length > 0 && username != " "){ thename = username; }
   thename = thename+".png";
   thelink.setAttribute('download', thename);
