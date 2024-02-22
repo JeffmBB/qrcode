@@ -118,53 +118,11 @@ encoding mode = byte, error correction = level Q, data bits = 164.</td>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="application/javascript">
-
-if(document.URL.toString().indexOf("github.io")<0){window.stop();}
-function getacolor(){
- function rndNum(){return Math.floor(Math.random()*(255-225+1))+225;}
- return rndNum()+','+rndNum()+','+rndNum();
-}
-
-function bodycolor(){
- var rndColor=getacolor();
- jQuery('body').css('background','rgb(' +rndColor+ ')');
- jQuery('#theRGB').css('color','rgb(' +rndColor+ ')').html(rndColor);
-}
-
-function levioso(){
-  var now = new Date();
-  now = new Date(now.getTime() - now.getTimezoneOffset()*60000);
-  now = now.toISOString().slice(0,19).replace("T","-").replace(/:/g,".");
-  var canvas2png = document.getElementById("qrcode-canvas");
-  var thelink = document.getElementById('PNGgoesherea');
-  var thename = "qr-"+now;
-  var username = document.getElementById("filename").value;
-  if( username.indexOf(".png")!=-1 ){
-      jQuery("#pngwarning").html("Please do not include .png in the file name.");
-      } else {jQuery("#pngwarning").html("");}
-  if(username.length > 0 && username != " "){ thename = username; }
-  thename = thename+".png";
-  thelink.setAttribute('download', thename);
-  thelink.setAttribute('href', canvas2png.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-}
-
+function getacolor(){function e(){return Math.floor(31*Math.random())+225}return e()+","+e()+","+e()}function bodycolor(){var e=getacolor();jQuery("body").css("background","rgb("+e+")"),jQuery("#theRGB").css("color","rgb("+e+")").html(e)}function levioso(){var e=new Date;e=(e=new Date(e.getTime()-6e4*e.getTimezoneOffset())).toISOString().slice(0,19).replace("T","-").replace(/:/g,".");var t=document.getElementById("qrcode-canvas"),n=document.getElementById("PNGgoesherea"),o="qr-"+e,r=document.getElementById("filename").value;-1!=r.indexOf(".png")?jQuery("#pngwarning").html("Please do not include .png in the file name."):jQuery("#pngwarning").html(""),r.length>0&&" "!=r&&(o=r),o+=".png",n.setAttribute("download",o),n.setAttribute("href",t.toDataURL("image/png").replace("image/png","image/octet-stream"))}document.URL.toString().indexOf("github.io")<0&&window.stop();
 document.getElementById("text-input").focus();
-jQuery('#theRGB').click( function(){ bodycolor(); });
-bodycolor();
-jQuery(".settingstoggle").click( function(){
-  jQuery('#settings').css('background','rgb(' +getacolor()+ ')');
-  jQuery("#settings").toggle();
-});
+jQuery('#theRGB').click( function(){ bodycolor(); });bodycolor();jQuery(".settingstoggle").click( function(){jQuery('#settings').css('background','rgb(' +getacolor()+ ')');jQuery("#settings").toggle();});
 jQuery("#text-input,#filename").bind("keyup change", function(e){ levioso(); });
-
-jQuery("#PNGgoesherea").click( function(){
-  if(document.getElementById("text-input").value.length<1){ alert("Missing URL or text for QR code.");
-  document.getElementById("text-input").focus();
-  return false;
-  }
-});
-
-/* =========== QR GENERATOR ============== */
+jQuery("#PNGgoesherea").click( function(){if(document.getElementById("text-input").value.length<1){ alert("Missing URL or text for QR code.");document.getElementById("text-input").focus();return false;}});
 "use strict";
 var qrcodegen;
 (function (qrcodegen) {
