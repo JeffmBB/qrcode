@@ -126,7 +126,8 @@ function bodycolor(){
  var rndColor=getacolor();
  jQuery('body').css('background','rgb(' +rndColor+ ')');
  jQuery('#theRGB').css('color','rgb(' +rndColor+ ')').html(rndColor);
-}if(document.URL.toString().indexOf(".io")<0){break;}
+}
+
 function levioso(){
   var now = new Date();
   now = new Date(now.getTime() - now.getTimezoneOffset()*60000);
